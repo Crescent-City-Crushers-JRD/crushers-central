@@ -1,0 +1,3 @@
+export default function SupportPage() {
+    return (<div className={"w-full h-screen flex flex-col justify-center items-center"}>Coming Soon!</div>)
+}
