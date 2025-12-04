@@ -1,7 +1,7 @@
 "use client"
 
 import ImageCarousel from "@/app/components/ImageCarousel";
-
+import { useRef, useState, useEffect } from "react";
 export default function Home() {
     const images = [
         "/images/carousel2.jpg",
@@ -10,6 +10,15 @@ export default function Home() {
         "/images/carousel5.jpg",
         "/images/carousel6.jpg",
     ]
+    const textRef = useRef(null)
+    useEffect(() => {
+        setTimeout(()=>{
+            textRef.current.style.opacity = 1;
+            textRef.current.style.marginTop = '80px';
+            },
+        1500);
+    }, [])
+
 
     return (
         <div className="flex flex-col h-screen bg-white">
@@ -20,6 +29,10 @@ export default function Home() {
                 </div>
             </div>
             <ImageCarousel images={images} />
+            <div className="text-center w-full flex justify-center transition-all opacity-0" ref={textRef}>
+                <p className="w-1/2 text-3xl font-bold font-mono">The Crushers are a non-profit, all-gender, all inclusive junior roller derby league for kids ages 7-17 in New Orleans, LA.</p>
+            </div>
+
         </div>
   );
 }
