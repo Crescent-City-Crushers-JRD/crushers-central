@@ -39,7 +39,7 @@ export default forwardRef(function Navbar(props, ref) {
     return (
         <nav
             ref={ref}
-            className="bg-gray-900 text-white h-[60px] flex items-center justify-between px-6 md:px-12 rounded-b-3xl"
+            className="bg-gray-900 text-white h-[60px] flex items-center justify-between px-6 md:px-12 rounded-b-3xl z-50 relative"
         >
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
@@ -71,7 +71,7 @@ export default forwardRef(function Navbar(props, ref) {
                 ></div>
                 <div
                     className={`w-6 h-[3px] bg-white transition-all ${
-                        open ? "-rotate-45 -translate-y-[6px]" : ""
+                        open ? "-rotate-45 -translate-y-[10px]" : ""
                     }`}
                 ></div>
             </button>
@@ -84,7 +84,7 @@ export default forwardRef(function Navbar(props, ref) {
                 className={`
           absolute top-[60px] left-0 w-full bg-gray-900 rounded-b-3xl shadow-lg
           flex flex-col items-start px-8 py-4 gap-4
-          transition-all duration-300 md:hidden
+          transition-all duration-300 md:hidden z-50
           ${open ? "opacity-100 max-h-[500px]" : "opacity-0 max-h-0 overflow-hidden"}
         `}
             >

@@ -28,11 +28,11 @@ export default function Home() {
                     <h1 className={`text-8xl animate-slide-bounce font-extrabold drop-shadow-md drop-shadow-gray-700 font-banger`}>Crushers</h1>
                 </div>
             </div>
-            <ImageCarousel images={images} />
+
             <div className="text-center w-full flex justify-center transition-all opacity-0" ref={textRef}>
                 <p className="w-1/2 text-3xl font-bold font-mono">The Crushers are a non-profit, all-gender, all inclusive junior roller derby league for kids ages 7-17 in New Orleans, LA.</p>
             </div>
-
+            <ImageCarousel images={images} />
         </div>
   );
 }

@@ -34,7 +34,6 @@ export default function RootLayout({ children }) {
             className={`${geistSans.variable} ${geistMono.variable} ${bangers.variable} antialiased`}
         >
         <ClientLayout>
-
             {children}
         </ClientLayout>
         </body>

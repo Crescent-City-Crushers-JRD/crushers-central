@@ -12,41 +12,42 @@ import {useEffect, useRef, useState} from "react";
  * - Images should live in /public/images/
  * - This uses plain <img> tags (easier to clone); you can adapt to Next/Image if you want
  */
+const path = "/headshots/resized_headshots"
+const silly_path = "/headshots/resized_silly";
+
 const players = [
-    {id:13, src:"/headshots/normal/PinkaVicious-N.jpg", level:0, derbyname:"PinkaVicious", number:"2319", bday:""},
-    {id:11, src:"/headshots/normal/LunaTic-N.jpg", level:0, derbyname:"Lunatic", number:"824", bday:""},
-    {id:14, src:"/headshots/normal/PlanetRaider-N.jpg", level:0, derbyname:"Planet Raider", number:"3333", bday:""},
-    {id:18, src:"/headshots/normal/SlamwiseGamgie-N.jpg", level:0, derbyname:"Slamwise Gamgee", number:"777", bday:""},
-    {id:10, src:"/headshots/normal/LittleStar-N.jpg", level:0, derbyname:"Little Star", number:"313", bday:""},
-    {id:24, src:"/headshots/normal/ToxicShock-N.jpg", level:0, derbyname:"Toxic Shock", number:"22", bday:""},
-    {id:7, src:"/headshots/normal/HotMess-N.jpg", level:0, derbyname:"Hot Mess Express", number:"500", bday:""},
-    {id:19, src:"/headshots/normal/SnowFight-N.jpg", level:0, derbyname:"Snow Fight", number:"10", bday:""},
-    {id:26, src:"/headshots/normal/Valkerye-N.jpg", level:0, derbyname:"Valkyrie", number:"666", bday:""},
-    {id:15, src:"/headshots/normal/Sabotage-N.jpg", level:0, derbyname:"Sabotage", number:"227", bday:""},
-    {id:9, src:"/headshots/normal/Lightning-N.jpg", level:0, derbyname:"Lightning", number:"731", bday:""},
-    {id:25, src:"/headshots/normal/TrafficJam-N.jpg", level:0, derbyname:"Traffic Jam", number:"11", bday:""},
-    {id:8, src:"/headshots/normal/InstiGator-N.jpg", level:0, derbyname:"InstiGator", number:"314", bday:""},
-    {id:21, src:"/headshots/normal/Thunder-N.jpg", level:0, derbyname:"Thunder", number:"137", bday:""},
-    {id:12, src:"/headshots/normal/MillsCity-N.jpg", level:0, derbyname:"Mills City", number:"52", bday:""},
-    {id:16, src:"/headshots/normal/Shadow.jpg", level:0, derbyname:"Shadow", number:"14", bday:""},
-    {id:17, src:"/headshots/normal/SkateMistake-N.jpg", level:0, derbyname:"Skate Mistake", number:"23", bday:""},
-    {id:5, src:"/headshots/normal/Duckie-N.jpg", level:0, derbyname:"Duck-a-nator", number:"707", bday:""},
-    {id:6, src:"/headshots/normal/HelloKilly-N.jpg", level:0, derbyname:"Hello Killy", number:"8", bday:""},
-    {id:22, src:"/headshots/normal/TinyTigrrr.jpg", level:0, derbyname:"Tiny Tigrrr", number:"404", bday:""},
-    {id:23, src:"/headshots/normal/TinyTornado-N.jpg", level:0, derbyname:"Tiny Tornado", number:"517", bday:""},
-
-
+    {id:13, src:`${path}/PinkaVicious-N.jpg`, level:0, derbyname:"PinkaVicious", number:"2319", bday:"", silly_src:`${silly_path}/PinkaVicious.jpg`},
+    {id:11, src:`${path}/LunaTic-N.jpg`, level:0, derbyname:"Lunatic", number:"824", bday:"", silly_src:`${silly_path}/LunaTic.jpg`},
+    {id:14, src:`${path}/PlanetRaider-N.jpg`, level:0, derbyname:"Planet Raider", number:"3333", bday:"", silly_src:`${silly_path}/PlanetRaider.jpg`},
+    {id:18, src:`${path}/SlamwiseGamgie-N.jpg`, level:0, derbyname:"Slamwise Gamgee", number:"777", bday:"", silly_src: `${silly_path}/SlamwiseGamgie.jpg`},
+    {id:10, src:`${path}/LittleStar-N.jpg`, level:0, derbyname:"Little Star", number:"313", bday:"", silly_src:`${silly_path}/LittleStar.jpg`},
+    {id:24, src:`${path}/ToxicShock-N.jpg`, level:0, derbyname:"Toxic Shock", number:"22", bday:"",silly_src:`${silly_path}/ToxicShock.jpg`},
+    {id:7, src:`${path}/HotMess-N.jpg`, level:0, derbyname:"Hot Mess Express", number:"500", bday:"",silly_src:`${silly_path}/HotMess.jpg`},
+    {id:19, src:`${path}/SnowFight-N.jpg`, level:0, derbyname:"Snow Fight", number:"10", bday:"", silly_src:`${silly_path}/SnowFight.jpg`},
+    {id:26, src:`${path}/Valkyrie-N.jpg`, level:0, derbyname:"Valkyrie", number:"666", bday:"",silly_src:`${silly_path}/Valkyrie.jpg`},
+    {id:15, src:`${path}/Sabotage-N.jpg`, level:0, derbyname:"Sabotage", number:"227", bday:"",silly_src:`${silly_path}/Sabotage.jpg`},
+    {id:9, src:`${path}/Lightning-N.jpg`, level:0, derbyname:"Lightning", number:"731", bday:"",silly_src:`${silly_path}/Lightning.jpg`},
+    {id:25, src:`${path}/TrafficJam-N.jpg`, level:0, derbyname:"Traffic Jam", number:"11", bday:"",silly_src: `${silly_path}/TrafficJam.jpg`},
+    {id:8, src:`${path}/InstiGator-N.jpg`, level:0, derbyname:"InstiGator", number:"314", bday:"",silly_src:`${silly_path}/InstiGator.jpg`},
+    {id:21, src:`${path}/Thunder-N.jpg`, level:0, derbyname:"Thunder", number:"137", bday:"",silly_src:`${silly_path}/Thunder.jpg`},
+    {id:12, src:`${path}/MillsCity-N.jpg`, level:0, derbyname:"Mills City", number:"52", bday:"",silly_src:`${silly_path}/MillsCity.jpg`},
+    {id:16, src:`${path}/Shadow.jpg`, level:0, derbyname:"Shadow", number:"14", bday:"",silly_src:`${silly_path}/Shadow.jpg`},
+    {id:17, src:`${path}/SkateMistake-N.jpg`, level:0, derbyname:"Skate Mistake", number:"23", bday:"",silly_src:`${silly_path}/SkateMistake.jpg`},
+    {id:5, src:`${path}/Duckie-N.jpg`, level:0, derbyname:"Duck-a-nator", number:"707", bday:"",silly_src:`${silly_path}/Duckie.jpg`},
+    {id:6, src:`${path}/HelloKilly-N.jpg`, level:0, derbyname:"Hello Killy", number:"8", bday:"",silly_src:`${silly_path}/HelloKilly.jpg`},
+    {id:22, src:`${path}/TinyTigrrr.jpg`, level:0, derbyname:"Tiny Tigrrr", number:"404", bday:"",silly_src: `${silly_path}/TinyTigrrr.jpg`},
+    {id:23, src:`${path}/TinyTornado-N.jpg`, level:0, derbyname:"Tiny Tornado", number:"517", bday:"",silly_src: `${silly_path}/TinyTornado.jpg`},
 ];
 
 const coaches = [
-    {id:1, src:"/headshots/normal/Coach-Blue-N.jpg", level:4, derbyname:"Blu", number:"", bday:""},
-    {id:2, src:"/headshots/normal/Coach-Fancy-N.jpg", level:4, derbyname:"Fancy", number:"", bday:""},
-    {id:3, src:"/headshots/normal/Coach-Kat-N.jpg", level:4, derbyname:"Kat", number:"", bday:""}
+    {id:1, src:`${path}/Coach-Blue-N.jpg`, level:4, derbyname:"Blu", number:"", bday:"",silly_src:`${silly_path}/Coach-Blue.jpg`},
+    {id:2, src:`${path}/Coach-Fancy-N.jpg`, level:4, derbyname:"Fancy", number:"", bday:"",silly_src: `${silly_path}/Coach-Fancy.jpg`},
+    {id:3, src:`${path}/Coach-Kat-N.jpg`, level:4, derbyname:"Kat", number:"", bday:"",silly_src:`${silly_path}/Coach-Kat.jpg`},
 ];
 
 const refs = [
-    {id:4, src:"/headshots/normal/DadWeather-N.jpg", level:5, derbyname:"Dad Weather", number:"", bday:""},
-    {id:20, src:"/headshots/normal/StormChaser-N.jpg", level:5, derbyname:"Storm Chaser", number:"", bday:""},
+    {id:4, src:`${path}/DadWeather-N.jpg`, level:5, derbyname:"Dad Weather", number:"", bday:""},
+    {id:20, src:`${path}/StormChaser-N.jpg`, level:5, derbyname:"Storm Chaser", number:"", bday:""},
 ]
 
 export default function SlidingGallery() {
@@ -55,6 +56,7 @@ export default function SlidingGallery() {
 
     const [active, setActive] = useState(null); // active = image object when expanded
     const [animating, setAnimating] = useState(false);
+    const [curPlayer, setCurPlayer] = useState(0);
 
     // reset to gallery
     const reset = () => {
@@ -71,20 +73,26 @@ export default function SlidingGallery() {
     useEffect(() => {
     },[])
 
-    const handleClick = (img, srcstring) => {
-        if (animating || (active && active.id === img.id)) return;
-        console.log("clicked");
-        console.log(img);
-        const el = imgRefs.current[img.id];
-        const container = containerRef.current;
-        if (!el || !container) return;
-        const elRect = el.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
-        console.log(elRect.top);
-        console.log(elRect.left);
-        console.log(containerRect.top);
-        console.log(containerRect.left);
-        el.style.transform = `translate(${containerRect.left},${containerRect.top})`;
+    const handleClick = (player) => {
+        // if (animating || (active && active.id === img.id)) return;
+        // console.log("clicked");
+        // console.log(img);
+        // const el = imgRefs.current[img.id];
+        // const container = containerRef.current;
+        // if (!el || !container) return;
+        // const elRect = el.getBoundingClientRect();
+        // const containerRect = container.getBoundingClientRect();
+        // console.log(elRect.top);
+        // console.log(elRect.left);
+        // console.log(containerRect.top);
+        // console.log(containerRect.left);
+        // el.style.transform = `translate(${containerRect.left},${containerRect.top})`;
+        if (curPlayer !== player.id) {
+            setCurPlayer(player.id);
+        } else {
+            setCurPlayer(0);
+        }
+
     }
 
     // const handleClick = (img) => {
@@ -180,18 +188,18 @@ export default function SlidingGallery() {
                             <div
                                 key={player.id}
                                 ref={(el) => (imgRefs.current[player.id] = el)}
-                                onClick={() => handleClick(player, player.src)}
-                                className={`w-full md:w-[32%] flex flex-col relative`}
+                                onClick={() => handleClick(player)}
+                                className={`w-full md:w-[32%] flex flex-col relative ${(player.id === curPlayer ? "border-black border-4" : "")}}`}
                             >
                                 {player.level === 4 && <div className="flex flex-row w-full text-center text-white text-shadow-black text-shadow-lg relative z-40 text-4xl font-banger mt-5 ml-4 mb-[-50px]">Coach</div>}
                                 <img
-                                    src={player.src}
+                                    src={(player.id === curPlayer ? player.silly_src : player.src)}
                                     alt={player.title}
                                     className={`w-full rounded-4xl drop-shadow-indigo-600 drop-shadow-xl object-cover  transition-all duration-500 h-[220px]`}
                                     style={{ display: "block", width: "100%", height: "100%" }}
                                 />
                                 <span className="text-4xl font-banger text-white absolute text-shadow-lg text-shadow-purple-700 bottom-[60px] left-[140px]">{player.number != "" ? `#${player.number}` : ""}</span>
-                                <span className="text-4xl font-mono font-bold mt-5 mb-5 text-center h-[20px]">{player.derbyname}</span>
+                                <span className="text-2xl md:text-4xl font-mono font-bold mt-5 mb-5 text-center h-[20px]">{player.derbyname}</span>
                             </div>
                         );
                     })}
@@ -206,11 +214,11 @@ export default function SlidingGallery() {
                             <div
                                 key={coach.id}
                                 ref={(el) => (imgRefs.current[coach.id] = el)}
-                                onClick={() => (isActive ? reset() : handleClick(coach))}
-                                className={`w-full md:w-[32%] flex flex-col relative`}
+                                onClick={() => handleClick(coach)}
+                                className={`w-full md:w-[32%] flex flex-col relative ${(coach.id === curPlayer ? "border-black border-4" : "")}`}
                             >
                                 <img
-                                    src={coach.src}
+                                    src={(coach.id === curPlayer ? coach.silly_src : coach.src)}
                                     alt={coach.title}
                                     className={`w-full rounded-4xl drop-shadow-indigo-600 drop-shadow-xl object-cover  transition-all duration-500 h-[220px]`}
                                     style={{ display: "block", width: "100%", height: "100%" }}

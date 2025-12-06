@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import CrusherContainer from "@/app/components/CrusherContainer";
 import Navbar from "@/app/components/navbar";
 import {useEffect, useRef} from "react";
 
@@ -23,9 +22,7 @@ export default function ClientLayout({ children }) {
     return (
         <>
             <Navbar ref={navRef}/>
-            <CrusherContainer routeKey={pathname}>
-                {children}
-            </CrusherContainer>
+            {children}
         </>
     );
 }
