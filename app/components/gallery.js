@@ -180,7 +180,7 @@ export default function SlidingGallery() {
     // };
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
+        <div className="max-w-6xl mx-auto p-6 bg-white text-black">
             <div ref={containerRef} className="relative animate-fade-in opacity-0">
                 <div className="flex flex-wrap gap-4 relative">
                     {players.map((player) => {
@@ -189,13 +189,13 @@ export default function SlidingGallery() {
                                 key={player.id}
                                 ref={(el) => (imgRefs.current[player.id] = el)}
                                 onClick={() => handleClick(player)}
-                                className={`w-full md:w-[32%] flex flex-col relative ${(player.id === curPlayer ? "border-black border-4" : "")}}`}
+                                className={`w-full md:w-[32%] flex flex-col relative`}
                             >
                                 {player.level === 4 && <div className="flex flex-row w-full text-center text-white text-shadow-black text-shadow-lg relative z-40 text-4xl font-banger mt-5 ml-4 mb-[-50px]">Coach</div>}
                                 <img
                                     src={(player.id === curPlayer ? player.silly_src : player.src)}
                                     alt={player.title}
-                                    className={`w-full rounded-4xl drop-shadow-indigo-600 drop-shadow-xl object-cover  transition-all duration-500 h-[220px]`}
+                                    className={`w-full rounded-4xl drop-shadow-indigo-600 drop-shadow-xl object-cover  transition-all duration-500 h-[220px] ${(player.id === curPlayer ? "border-black border-4" : "")}`}
                                     style={{ display: "block", width: "100%", height: "100%" }}
                                 />
                                 <span className="text-4xl font-banger text-white absolute text-shadow-lg text-shadow-purple-700 bottom-[60px] left-[140px]">{player.number != "" ? `#${player.number}` : ""}</span>
@@ -215,12 +215,12 @@ export default function SlidingGallery() {
                                 key={coach.id}
                                 ref={(el) => (imgRefs.current[coach.id] = el)}
                                 onClick={() => handleClick(coach)}
-                                className={`w-full md:w-[32%] flex flex-col relative ${(coach.id === curPlayer ? "border-black border-4" : "")}`}
+                                className={`w-full md:w-[32%] flex flex-col relative`}
                             >
                                 <img
                                     src={(coach.id === curPlayer ? coach.silly_src : coach.src)}
                                     alt={coach.title}
-                                    className={`w-full rounded-4xl drop-shadow-indigo-600 drop-shadow-xl object-cover  transition-all duration-500 h-[220px]`}
+                                    className={`w-full rounded-4xl drop-shadow-indigo-600 drop-shadow-xl object-cover  transition-all duration-500 h-[220px] ${(coach.id === curPlayer ? "border-black border-4" : "")}`}
                                     style={{ display: "block", width: "100%", height: "100%" }}
                                 />
 
