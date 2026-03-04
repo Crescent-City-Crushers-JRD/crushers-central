@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { forwardRef, useState } from "react";
+import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
 
 export default forwardRef(function Navbar(props, ref) {
     const [open, setOpen] = useState(false);
@@ -10,10 +11,10 @@ export default forwardRef(function Navbar(props, ref) {
     const navLinks = [
         { id: 0, title: "Home", link: "/" },
         { id: 1, title: "Crushers", link: "/team" },
-        { id: 2, title: "About", link: "/about" },
+        { id: 2, title: "Derby", link: "/about" },
         { id: 3, title: "Join", link: "/join" },
         { id: 4, title: "Calendar", link: "/calendar" },
-        { id: 5, title: "Caregivers", link: "/parents" },
+        { id: 5, title: "For Families", link: "/parents" },
         { id: 6, title: "Contribute", link: "/support" },
     ];
 
@@ -42,7 +43,7 @@ export default forwardRef(function Navbar(props, ref) {
             className="bg-gray-900 text-white h-[60px] flex items-center justify-between px-6 md:px-12 rounded-b-3xl z-50 relative"
         >
             {/* Logo */}
-            <div className="flex-shrink-0 flex items-center">
+            <div className="flex-shrink-0 w-56 flex items-center justify-evenly">
                 <Link href="/">
                     <Image
                         width="50"
@@ -51,6 +52,12 @@ export default forwardRef(function Navbar(props, ref) {
                         alt="Logo"
                         className="cursor-pointer"
                     />
+                </Link>
+                <Link href="https://www.instagram.com/crescentcitycrushers/">
+                    <span className={`text-4xl`}><FaInstagram /></span>
+                </Link>
+                <Link href="https://www.facebook.com/Crescentcityjuniorrollerderby">
+                    <span className={`text-4xl`}><FaFacebookSquare /></span>
                 </Link>
             </div>
 

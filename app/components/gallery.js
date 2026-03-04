@@ -205,7 +205,7 @@ export default function SlidingGallery() {
                     })}
                 </div>
                 <div>
-                    <p className="w-full text-center mt-10 italic">Not Pictured: ChupaCabra #9, Ruby Riot #15, Chromozen #21, Raditz Roller, Ollie Pop</p>
+                    <p className="w-full text-center mt-10 italic">Not Pictured: ChupaCabra #9, Ruby Riot #15, Chromozen #21, Raditz Roller</p>
                 </div>
                 <div className="flex flex-wrap gap-4 relative mt-10">
                     <h2 className="w-full text-7xl text-center font-banger font-bold text-black mb-5">Coaches</h2>
@@ -228,6 +228,9 @@ export default function SlidingGallery() {
                             </div>
                         );
                     })}
+                </div>
+                <div>
+                    <p className="w-full text-center mt-10 italic">Not Pictured: Coach Crimzen</p>
                 </div>
                 <div className="flex flex-wrap gap-4 relative mt-20 hidden">
                     <h2 className="w-full text-4xl text-center font-banger font-bold text-black mb-5">Referees</h2>
