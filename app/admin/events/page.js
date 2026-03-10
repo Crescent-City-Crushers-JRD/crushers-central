@@ -36,7 +36,7 @@ function toISOLocal(datetimeLocal) {
     return new Date(datetimeLocal).toISOString();
 }
 
-export default function CreateEventPage() {
+export default function AdminEventPage() {
     const [form, setForm] = useState(initialForm);
     const [submitting, setSubmitting] = useState(false);
     const [result, setResult] = useState(null); // { success, message }
