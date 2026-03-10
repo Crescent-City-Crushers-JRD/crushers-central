@@ -74,19 +74,6 @@ export default function SlidingGallery() {
     },[])
 
     const handleClick = (player) => {
-        // if (animating || (active && active.id === img.id)) return;
-        // console.log("clicked");
-        // console.log(img);
-        // const el = imgRefs.current[img.id];
-        // const container = containerRef.current;
-        // if (!el || !container) return;
-        // const elRect = el.getBoundingClientRect();
-        // const containerRect = container.getBoundingClientRect();
-        // console.log(elRect.top);
-        // console.log(elRect.left);
-        // console.log(containerRect.top);
-        // console.log(containerRect.left);
-        // el.style.transform = `translate(${containerRect.left},${containerRect.top})`;
         if (curPlayer !== player.id) {
             setCurPlayer(player.id);
         } else {
@@ -95,89 +82,6 @@ export default function SlidingGallery() {
 
     }
 
-    // const handleClick = (img) => {
-    //     // ignore clicks while animating or already active on same image
-    //     if (animating || (active && active.id === img.id)) return;
-    //
-    //     const el = imgRefs.current[img.id];
-    //     const container = containerRef.current;
-    //     if (!el || !container) return;
-    //
-    //     const elRect = el.getBoundingClientRect();
-    //     const containerRect = container.getBoundingClientRect();
-    //
-    //     // create clone
-    //     const clone = el.cloneNode(true);
-    //     // basic styles so it sits above everything
-    //     Object.assign(clone.style, {
-    //         position: "fixed",
-    //         top: `${elRect.top}px`,
-    //         left: `${elRect.left}px`,
-    //         width: `${elRect.width}px`,
-    //         height: `${elRect.height}px`,
-    //         margin: "0",
-    //         zIndex: 9999,
-    //         transition: "transform 700ms cubic-bezier(0.22,1,0.36,1), width 700ms cubic-bezier(0.22,1,0.36,1), height 700ms cubic-bezier(0.22,1,0.36,1), opacity 300ms",
-    //         willChange: "transform, width, height",
-    //         borderRadius: getComputedStyle(el).borderRadius || "12px",
-    //         objectFit: "cover",
-    //     });
-    //
-    //     document.body.appendChild(clone);
-    //
-    //     // hide original to avoid double-image flash during animation
-    //     el.style.visibility = "hidden";
-    //
-    //     // small timeout to ensure appended & styles applied, then trigger transform
-    //     requestAnimationFrame(() => {
-    //         // compute target position (left alignment inside container)
-    //         // Add a little padding from container left
-    //         const leftPadding = 24;
-    //         // target left on-screen coordinate
-    //         const targetLeft = containerRect.left + leftPadding;
-    //         // target top align to container's top (you can adjust)
-    //         const targetTop = containerRect.top + 24;
-    //
-    //         // compute translation delta (from clone's current position)
-    //         const deltaX = targetLeft - elRect.left;
-    //         const deltaY = targetTop - elRect.top;
-    //
-    //         // target scale / size: we want clone to be wider/taller — instead of relying on scale only, adjust width/height too
-    //         const targetWidth = Math.min(containerRect.width * 0.5, 900); // e.g. half container
-    //         const scaleX = targetWidth / elRect.width;
-    //         const scale = scaleX;
-    //
-    //         // apply transform to move left and scale
-    //         clone.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
-    //
-    //         // when transition ends, finalize: set active state and remove clone
-    //         const onEnd = (e) => {
-    //             // ensure we react only to transform/width/height transition end
-    //             if (e.target !== clone) return;
-    //
-    //             clone.removeEventListener("transitionend", onEnd);
-    //             // remove clone & update state; show layout with active item
-    //             document.body.removeChild(clone);
-    //             el.style.visibility = ""; // restore (the grid will re-render)
-    //             setAnimating(false);
-    //             setActive(img);
-    //         };
-    //
-    //         setAnimating(true);
-    //         clone.addEventListener("transitionend", onEnd);
-    //
-    //         // safety: if transitionend doesn't fire (rare), fallback after duration
-    //         setTimeout(() => {
-    //             if (document.body.contains(clone)) {
-    //                 clone.removeEventListener("transitionend", onEnd);
-    //                 try { document.body.removeChild(clone); } catch (err) {}
-    //                 el.style.visibility = "";
-    //                 setAnimating(false);
-    //                 setActive(img);
-    //             }
-    //         }, 900);
-    //     });
-    // };
 
     return (
         <div className="max-w-6xl mx-auto p-6 bg-white text-black">
