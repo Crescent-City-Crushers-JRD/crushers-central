@@ -19,7 +19,7 @@ const players = [
     {id:13, src:`${path}/PinkaVicious-N.jpg`, level:0, derbyname:"PinkaVicious", number:"2319", bday:"", silly_src:`${silly_path}/PinkaVicious.jpg`},
     {id:11, src:`${path}/LunaTic-N.jpg`, level:0, derbyname:"Lunatic", number:"824", bday:"", silly_src:`${silly_path}/LunaTic.jpg`},
     {id:14, src:`${path}/PlanetRaider-N.jpg`, level:0, derbyname:"Planet Raider", number:"3333", bday:"", silly_src:`${silly_path}/PlanetRaider.jpg`},
-    {id:18, src:`${path}/SlamwiseGamgie-N.jpg`, level:0, derbyname:"Slamwise Gamgee", number:"777", bday:"", silly_src: `${silly_path}/SlamwiseGamgie.jpg`},
+    {id:18, src:`${path}/SlamwiseGamgie-N.jpg`, level:0, derbyname:"Slamwise Gamgee", number:"777", bday:"", silly_src: `${silly_path}/SlamwiseGamgee.jpg`},
     {id:10, src:`${path}/LittleStar-N.jpg`, level:0, derbyname:"Little Star", number:"313", bday:"", silly_src:`${silly_path}/LittleStar.jpg`},
     {id:24, src:`${path}/ToxicShock-N.jpg`, level:0, derbyname:"Toxic Shock", number:"22", bday:"",silly_src:`${silly_path}/ToxicShock.jpg`},
     {id:7, src:`${path}/HotMess-N.jpg`, level:0, derbyname:"Hot Mess Express", number:"500", bday:"",silly_src:`${silly_path}/HotMess.jpg`},

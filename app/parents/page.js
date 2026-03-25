@@ -1,3 +1,6 @@
 export default function ParentsPage() {
-    return (<div className={"w-full h-screen flex flex-col justify-center items-center"}>Coming Soon!</div>)
+    return (
+        <div className="flex flex-col w-full h-screen justify-center items-center bg-white">
+            Coming Soon!
+        </div>)
 }

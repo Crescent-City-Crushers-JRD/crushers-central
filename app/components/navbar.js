@@ -40,7 +40,7 @@ export default forwardRef(function Navbar(props, ref) {
     return (
         <nav
             ref={ref}
-            className="bg-gray-900 text-white h-[60px] flex items-center justify-between px-6 md:px-12 rounded-b-3xl z-50 relative"
+            className="bg-gray-900 text-white h-[60px] flex items-center justify-between px-6 md:px-12 rounded-b-3xl z-50 fixed w-full max-w-[98%] p-0"
         >
             {/* Logo */}
             <div className="flex-shrink-0 w-56 flex items-center justify-evenly">
@@ -53,17 +53,17 @@ export default forwardRef(function Navbar(props, ref) {
                         className="cursor-pointer"
                     />
                 </Link>
-                <Link href="https://www.instagram.com/crescentcitycrushers/">
+                <Link target="_blank" href="https://www.instagram.com/crescentcitycrushers/">
                     <span className={`text-4xl`}><FaInstagram /></span>
                 </Link>
-                <Link href="https://www.facebook.com/Crescentcityjuniorrollerderby">
+                <Link target="_blank" href="https://www.facebook.com/Crescentcityjuniorrollerderby">
                     <span className={`text-4xl`}><FaFacebookSquare /></span>
                 </Link>
             </div>
 
             {/* Hamburger (mobile only) */}
             <button
-                className="md:hidden flex flex-col gap-[5px] p-2"
+                className="lg:hidden flex flex-col gap-[5px] p-2"
                 onClick={() => setOpen(!open)}
             >
                 <div
@@ -84,7 +84,7 @@ export default forwardRef(function Navbar(props, ref) {
             </button>
 
             {/* Desktop Menu */}
-            <ul className="hidden md:flex flex-row gap-10 pr-10">{navInner}</ul>
+            <ul className="hidden lg:flex flex-row gap-10 pr-10">{navInner}</ul>
 
             {/* Mobile Dropdown Menu */}
             <div

@@ -22,7 +22,9 @@ export default function ClientLayout({ children }) {
     return (
         <>
             <Navbar ref={navRef}/>
-            {children}
+            <div className="flex flex-col h-screen bg-white pt-14">
+                {children}
+            </div>
         </>
     );
 }

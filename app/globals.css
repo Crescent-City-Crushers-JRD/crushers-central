@@ -101,3 +101,16 @@ body {
 .animate-fade-in {
     animation: fade-in 2s forwards;
 }
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.animate-fade-out {
+    animation: fade-out 2s forwards;
+}
