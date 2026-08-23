@@ -54,7 +54,7 @@ export default function JoinUsPage() {
                     </a>
                 </div>
                 <div className={"flex flex-col justify-start mt-2 font-mono text-md"}>
-                    <p>Please also complete the following: </p>
+                    <p className={"font-bold"}>Please also complete the following: </p>
                     <ul className={"ml-20 w-[90%] flex flex-col mt-2 font-mono text-md"}>
                         <li className={"flex flex-row justify-between"}>
                             <a className={"text-blue-600 font-bold"} href={"https://forms.gle/rEraEh52dmXN5BzF7"} target={"_blank"}>Parent/Guardian & Medical Information</a>
