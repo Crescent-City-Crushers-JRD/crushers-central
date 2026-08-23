@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 export default function CalendarPage() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [dateEvents, setDateEvents] = useState(null);
-
+    const [loading, setLoading] = useState(true);
 
     const sampleUpcomingEvents = [{
         id: 1,
@@ -28,9 +28,23 @@ export default function CalendarPage() {
         }
     ];
     const [upcomingEvents, setUpcomingEvents] = useState(sampleUpcomingEvents);
-
     useEffect(() => {
-
+        const host = (process.env.NEXT_PUBLIC_API_MODE === 'dev' ? process.env.NEXT_PUBLIC_API_HOST_LOCAL : process.env.NEXT_PUBLIC_API_HOST_PROD)
+        async function fetchEvents() {
+            try {
+                const response = await fetch(`${host}/events`,
+                    {
+                        method: "GET",
+                    });
+                const json = await response.json();
+                console.log(json);
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchEvents();
     },[])
 
     const handleDate = (date) => {

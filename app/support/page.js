@@ -29,7 +29,7 @@ export default function SupportPage() {
     const coreTab = <div className={`w-4/5 transition-all duration-300 mt-8 mx-auto flex flex-col justify-center font-mono`} id="coreTab">
         <p className={"mb-2"}>Junior derby takes heart. It also takes helmets, track tape, and a whole lot of gas money to get our
             skaters where they need to go. If you've ever watched a Crushers bout and felt that electricity in the
-            room, you already know what this league means to New Orleans. Now's your chance to be part of it
+            room, you already know what this league means to New Orleans and our kids. Now's your chance to be part of it
             year-round.</p>
         <p className={"mb-2"}>A big part of our dream is to find a home for Roller Derby in New Orleans and create
             the first permanent roller derby facility for skaters, coaches, family, and fans. We can make this dream
@@ -44,24 +44,24 @@ export default function SupportPage() {
     </div>
 
     return (
-        <div className="flex flex-col h-screen bg-white">
+        <div className="flex flex-col justify-center items-center h-screen bg-white">
             {coreTab}
             <h4 className={"text-xl font-bold leading-tight text-center font-mono"}>Find Out More:</h4>
             <ul className="flex flex-rwo justify-center items-center mt-0 w-full mx-auto">
                 <li className={`border-gray-600 border w-1/4 rounded-lg ml-1 font-mono text-center text-lg cursor-pointer ${supportTab === "donateTab" ? "bg-gray-300" : "bg-white"}`}
                     onClick={() => setSupportTab("donateTab")}
                 >
-                     💵<span className={"pl-3 pr-3"}>Donation</span>💵
+                     💵<span className={"pl-3 pr-3 md:text-lg text-sm" }>Donations</span>💵
                 </li>
                 <li className={`border-gray-600 border w-1/4 rounded-lg ml-1 font-mono text-center text-lg cursor-pointer ${supportTab === "membershipTab" ? "bg-gray-300" : "bg-white"}`}
                     onClick={() => setSupportTab("membershipTab")}
                 >
-                    🛼<span className={"pl-3 pr-3"}>Memberships</span>🛼
+                    🛼<span className={"pl-3 pr-3 md:text-lg text-sm"}>Memberships</span>🛼
                 </li>
                 <li className={`border-gray-600 border w-1/4 rounded-lg ml-1 font-mono text-center text-lg cursor-pointer ${supportTab === "sponsorTab" ? "bg-gray-300" : "bg-white"}`}
                     onClick={() => setSupportTab("sponsorTab")}
                 >
-                    🌟<span className={"pl-3 pr-3"}>Sponsorships</span> 🌟
+                    🌟<span className={"pl-3 pr-3 md:text-lg text-sm"}>Sponsorships</span> 🌟
                 </li>
             </ul>
             <div className={"w-[90%] flex flex-col justify-center items-center mt-0 ml-[15%]"}>

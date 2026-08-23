@@ -11,11 +11,11 @@ export default forwardRef(function Navbar(props, ref) {
     const navLinks = [
         { id: 0, title: "Home", link: "/" },
         { id: 1, title: "Crushers", link: "/team" },
-        { id: 2, title: "Derby", link: "/about" },
+        // { id: 2, title: "Derby", link: "/about" },
         { id: 3, title: "Join", link: "/join" },
-        { id: 4, title: "Calendar", link: "/calendar" },
-        { id: 5, title: "For Families", link: "/parents" },
-        { id: 6, title: "Contribute", link: "/support" },
+        // { id: 4, title: "Calendar", link: "/calendar" },
+        // { id: 5, title: "For Families", link: "/parents" },
+        // { id: 6, title: "Contribute", link: "/support" },
     ];
 
     const navInner = navLinks.map((item) => (
