@@ -26,7 +26,7 @@ export default function JoinUsPage() {
                     <p className={"mb-2 mt-10"}>Registration cost: $100 non-refundable covers all four days of boot camp and your first month of dues.</p>
 
                     <p className={"mb-2"}>Crushers follow the JRDA Level System for training and assessing Skaters for different levels of: </p>
-                    <ul className={"ml-20 w-[90%] flex flex-col mt-2 font-mono text-md"}>
+                    <ul className={"ml-5 lg:ml-20 w-[90%] flex flex-col mt-2 font-mono text-md"}>
                         <li>Level 0: For new skaters learning to skate, the Crushers run a series of workshops after intake to get our
                         freshies ready to play.</li>
                         <li className={"mt-2"}>Level 1 (No Contact/Positional): Focuses on basic skating, safety, and positional blocking only (no intentional contact). </li>
