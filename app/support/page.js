@@ -44,7 +44,7 @@ export default function SupportPage() {
     </div>
 
     return (
-        <div className="flex flex-col justify-center items-center h-screen bg-white">
+        <div className="flex flex-col items-center min-h-screen bg-white">
             {coreTab}
             <h4 className={"text-xl font-bold leading-tight text-center font-mono"}>Find Out More:</h4>
             <ul className="flex flex-rwo justify-center items-center mt-0 w-full mx-auto">

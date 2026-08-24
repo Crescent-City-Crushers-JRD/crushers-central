@@ -55,7 +55,7 @@ export default function CalendarPage() {
 
     const today = new Date();
 
-    return (<div className={"w-full h-screen flex flex-col justify-start pt-10 items-center"}>
+    return (<div className={"w-full min-h-screen flex flex-col justify-start pt-10 items-center"}>
         <h2 className={"text-4xl font-bold font-banger"}>Upcoming Events</h2>
         <EventsCards ccEvents={upcomingEvents} />
         <MonthCalendar onDateSelect={handleDate} />

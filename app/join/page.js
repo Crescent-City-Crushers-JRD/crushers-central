@@ -1,9 +1,9 @@
 "use client"
 export default function JoinUsPage() {
     return (
-        <div className={"w-full mt-2 flex flex-col justify-center items-center h-screen"}>
+        <div className={"w-full mt-2 flex flex-col items-center min-h-screen"}>
             <div className="w-[95%] p-2">
-                <h1 className={"text-4xl font-bold leading-tight font-mono text-center mb-2"}>
+                <h1 className={"text-4xl font-bold leading-tight font-mono text-center mb-2 mt-8"}>
                     Want to join?
                 </h1>
                 <div className={"flex flex-col justify-start mt-2 font-mono text-md"}>
@@ -35,7 +35,7 @@ export default function JoinUsPage() {
                     </ul>
                 </div>
 
-                <div className={"flex flex-row w-full justify-evenly mt-2 font-mono text-md"}>
+                <div className={"flex flex-col md:flex-row w-full justify-evenly mt-2 font-mono text-md"}>
                     {/*<p>The Crushers use an account system for Skaters and Families to track their progress, update contact information, and*/}
                     {/*to provide opportunities for events, volunteering, and everything else Derby related. New Families can register an*/}
                     {/*account by givig us some details about you and your skater, and keep track of us onboarding them. Account setup is easy and*/}
@@ -53,29 +53,21 @@ export default function JoinUsPage() {
                             Returning Skaters Register Here</button>
                     </a>
                 </div>
-                <div className={"flex flex-col justify-start mt-2 font-mono text-md"}>
+                <div className={"flex flex-col justify-start mt-5 font-mono text-md"}>
                     <p className={"font-bold"}>Please also complete the following: </p>
                     <ul className={"ml-20 w-[90%] flex flex-col mt-2 font-mono text-md"}>
                         <li className={"flex flex-row justify-between"}>
-                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/rEraEh52dmXN5BzF7"} target={"_blank"}>Parent/Guardian & Medical Information</a>
-                            <span className={"text-sm italic"}>https://forms.gle/rEraEh52dmXN5BzF7</span>
+                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/rEraEh52dmXN5BzF7"} target={"_blank"} rel="noopener noreferrer">Parent/Guardian & Medical Information</a>
                         </li>
 
                         <li className={"flex flex-row justify-between"}>
-                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/8BGNTtGW58T2EysQ8"} target={"_blank"}>Release Forms</a>
-                            <span className={"text-sm italic"}>https://forms.gle/8BGNTtGW58T2EysQ8</span>
+                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/8BGNTtGW58T2EysQ8"} target={"_blank"} rel="noopener noreferrer">Release Forms</a>
                         </li>
                         <li className={"flex flex-row justify-between"}>
-                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/H1fXEKPynXaWu3vu5"} target={"_blank"}>Skater/Volunteer Code of Conduct:</a>
-                            <span className={"text-sm italic"}>https://forms.gle/H1fXEKPynXaWu3vu5</span>
+                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/H1fXEKPynXaWu3vu5"} target={"_blank"} rel="noopener noreferrer">Skater/Volunteer Code of Conduct:</a>
                         </li>
                         <li className={"flex flex-row justify-between"}>
-                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/VGRuYh9oQmusszee7"} target={"_blank"}>Parent Code of Conduct</a>
-                            <span className={"text-sm italic"}>https://forms.gle/VGRuYh9oQmusszee7</span>
-                        </li>
-                        <li className={"flex flex-row justify-between"}>
-                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/VGRuYh9oQmusszee7"} target={"_blank"}>Parent Code of Conduct</a>
-                            <span className={"text-sm italic"}>https://forms.gle/VGRuYh9oQmusszee7</span>
+                            <a className={"text-blue-600 font-bold"} href={"https://forms.gle/VGRuYh9oQmusszee7"} target={"_blank"} rel="noopener noreferrer">Parent Code of Conduct</a>
                         </li>
                     </ul>
                 </div>
