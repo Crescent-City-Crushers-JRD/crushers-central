@@ -93,6 +93,17 @@ export default function AdminEvent() {
         );
     }
 
+    // To readable Local Time string
+    function toLocalTimePrint(rfc3339) {
+        if (!rfc3339) return "";
+        const d = new Date(rfc3339);
+        if (isNaN(d)) return "";
+        const pad = (n) => String(n).padStart(2, "0");
+        return (
+            d
+        )
+    }
+
 // Converts the <input>'s local value -> a proper RFC3339 string (with offset)
     function toRFC3339(localValue) {
         if (!localValue) return "";
@@ -156,14 +167,18 @@ export default function AdminEvent() {
     function listEvents() {
         console.log("events", events);
         if(events != null) {
+            events.sort(function(a, b) {
+               if(a.cc_event_start < b.cc_event_start) return -1 ;
+               return 1
+            });
             return events.map((event) => {
                 console.log("event", event);
-                return <tr className="text-center" key={event.id}>
+                return <tr className="text-center text-md even:bg-slate-300" key={event.id}>
                     <td>{event.cc_event_type ? event.cc_event_type : "Practice"}</td>
                     <td>{event.cc_event_name}</td>
-                    <td>{toDatetimeLocalValue(event.cc_event_start)}</td>
-                    <td>{toDatetimeLocalValue(event.cc_event_end)}</td>
-                    <td><button id={event.id} onClick={(e)=>{console.log("Loading: ",event.id)}} className={"cursor-pointer"}>Edit</button></td>
+                    <td className={"text-sm"}>{toLocalTimePrint(event.cc_event_start).toLocaleString()}</td>
+                    <td className={"text-sm"}>{toLocalTimePrint(event.cc_event_end).toLocaleTimeString()}</td>
+                    <td><button id={event.id} onClick={(e)=>{console.log("Loading: ",event.id)}} className={"cursor-pointer text-blue-800 hover:underline"}>Edit</button></td>
                 </tr>
             })
 
@@ -221,7 +236,7 @@ export default function AdminEvent() {
                             className="w-full border rounded-lg p-2 h-20"
                             placeholder="Event Description"
                             value={eventPayload.description}
-                            onChange={(e) => setEventPayload({ ...eventPayload, description: e.target.value })}
+                            onChange={(e) => setEventPayload({ ...eventPayload, event_description: e.target.value })}
                         />
                         <label className="w-1/2">Event Location</label>
                         <select className="w-full border rounded-lg p-2"
@@ -272,9 +287,9 @@ export default function AdminEvent() {
                 </div>
                 <div>
                     <h1>Events In Database</h1>
-                    <table className="w-full border rounded-lg shadow-md w-full">
+                    <table className="w-full border rounded-lg shadow-md ">
                         <thead>
-                        <tr>
+                        <tr className="bg-white border-b-1 border-black">
                             <th>Event Type</th>
                             <th>Event Name</th>
                             <th>Event Start</th>

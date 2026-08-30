@@ -19,7 +19,7 @@ export default function ImageCarousel({ images, interval = 3000 }) {
     }, [images.length, interval]);
 
     return (
-        <div className="animate-slide-up relative w-full max-w-5xl mx-auto overflow-hidden rounded-xl">
+        <div className="animate-slide-up relative w-full max-w-5xl mx-auto overflow-hidden rounded-3xl pl-2 pr-2">
             <div className="relative h-[400px]">
                 {
                     images.map((src, index) => (

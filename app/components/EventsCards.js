@@ -6,6 +6,10 @@ export default function EventsCards({ ccEvents }) {
     if (ccEvents === null) {
         return <div>Nothing Happening</div>;
     }
+    ccEvents.sort(function (a, b) {
+        if(a.cc_event_start < b.cc_event_start) return -1;
+        return 1;
+    })
     const cards = ccEvents.map((ccEvent)=> {
         return (
             <EventCard key={ccEvent.id} ccEvent={ccEvent} />

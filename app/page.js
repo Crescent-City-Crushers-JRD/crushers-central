@@ -14,14 +14,15 @@ export default function Home() {
     useEffect(() => {
         setTimeout(()=>{
             textRef.current.style.opacity = 1;
-            textRef.current.style.marginTop = '80px';
+            textRef.current.style.marginTop = '40px';
+            textRef.current.style.display = 'block';
             },
-        1500);
+        5000);
     }, [])
 
 
     return (
-        <div className="flex flex-col bg-white pb-50 text-black">
+        <div className="flex flex-col items-center bg-white pb-50 text-black">
             <div className="flex flex-col justify-center mt-5">
                 <div className="text-center w-full">
                     <h2 className="font-bold text-5xl animate-slide-down drop-shadow-sm drop-shadow-indigo-600 font-banger" >Crescent City</h2>
@@ -29,8 +30,8 @@ export default function Home() {
                 </div>
             </div>
 
-            <div className="text-center w-full flex justify-center transition-all opacity-0" ref={textRef}>
-                <p className="w-3/4 md:w-1/2 text-xl md:text-3xl font-bold font-mono">The Crushers are a non-profit, all-gender, all inclusive junior roller derby league for kids ages 7-17 in New Orleans, LA.</p>
+            <div className="text-center w-full items-center opacity-0 hidden m-auto" ref={textRef}>
+                <p className="p-3 text-xl md:text-3xl font-bold font-mono">The Crushers are a non-profit, all-gender, all inclusive junior roller derby league for kids ages 7-17 in New Orleans, LA.</p>
             </div>
             <ImageCarousel images={images} />
         </div>
