@@ -2,6 +2,7 @@
 
 import ImageCarousel from "@/app/components/ImageCarousel";
 import { useRef, useState, useEffect } from "react";
+import EventsCards from "@/app/components/EventsCards";
 export default function Home() {
     const images = [
         "/images/carousel2.jpg",
@@ -34,6 +35,7 @@ export default function Home() {
                 <p className="p-3 text-xl md:text-3xl font-bold font-mono">The Crushers are a non-profit, all-gender, all inclusive junior roller derby league for kids ages 7-17 in New Orleans, LA.</p>
             </div>
             <ImageCarousel images={images} />
+            <EventsCards ccEvents={upcomingEvents.slice(0, 3)} />
         </div>
   );
 }

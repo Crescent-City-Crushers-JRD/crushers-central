@@ -11,7 +11,11 @@ export default function JoinUsPage() {
                         whether you'd like to skate for fun or participate in competitive, full-impact, Roller Derby matches.</p>
                     <p className={"mb-2 text-2xl font-bold"}>Welcome to the 2026-2027 season of Crescent City Crushers Junior Roller Derby, we can't wait to meet you!</p>
 
-                    <p className={"mb-2"}>Join us for boot camp the last two Fridays of August, 8/21 and 8/28, from 6-9pm, and the last two Sundays in August, 8/23 and 8/30, from 9am-12pm, at our practice warehouse at 3632 Desire Parkway.</p>
+                    <p className={"mb-2"}>
+                        Our first official practice and new skater intake will be from 9am-11pm on Sunday September 6th (9/6/26), at our practice warehouse at 3632 Desire Parkway.
+                        This is our final intake day for new skaters. We will have another intake in the summer of '27 after our regular season ends.
+                    </p>
+                    <p className={"mb-2 font-bold"}>Parents and Caregivers, please plan to stay for the first 10 minutes of practice, as we will be going over important information, schedule, and forms for the 2026-27 season</p>
 
                     <p className={"mb-2 font-bold"}>FAQs:</p>
                     <p className={"mb-2"}>Experience level needed?</p>
