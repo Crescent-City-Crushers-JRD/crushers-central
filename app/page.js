@@ -17,7 +17,7 @@ export default function Home() {
             textRef.current.style.marginTop = '40px';
             textRef.current.style.display = 'block';
             },
-        5000);
+        3000);
     }, [])
 
 
