@@ -12,6 +12,7 @@ export default function Home() {
         "/images/carousel6.jpg",
     ]
     const textRef = useRef(null)
+    const [upcomingEvents, setUpcomingEvents] = useState(null);
     useEffect(() => {
         setTimeout(()=>{
             textRef.current.style.opacity = 1;
@@ -19,6 +20,29 @@ export default function Home() {
             textRef.current.style.display = 'block';
             },
         3000);
+        const host = (process.env.NEXT_PUBLIC_API_MODE === 'dev' ? process.env.NEXT_PUBLIC_API_HOST_LOCAL : process.env.NEXT_PUBLIC_API_HOST_PROD)
+        async function fetchEvents() {
+            try {
+                const response = await fetch(`${host}/events`,
+                    {
+                        method: "GET",
+                    });
+                const json = await response.json();
+                console.log(json);
+                if (json.events.length > 0) {
+                    json.events.sort((a, b) => {
+                        if(a.cc_event_start > b.cc_event_start) return 1;
+                        return -1;
+                    })
+                    setUpcomingEvents(json.events.slice(0, 4));
+                }
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchEvents();
     }, [])
 
 
@@ -35,6 +59,8 @@ export default function Home() {
                 <p className="p-3 text-xl md:text-3xl font-bold font-mono">The Crushers are a non-profit, all-gender, all inclusive junior roller derby league for kids ages 7-17 in New Orleans, LA.</p>
             </div>
             <ImageCarousel images={images} />
+            <div className={"mt-20 mb-1 text-2xl font-bold"}>Upcoming Events</div>
+            <EventsCards ccEvents={upcomingEvents} />
         </div>
   );
 }
