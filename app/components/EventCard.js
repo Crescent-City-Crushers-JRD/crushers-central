@@ -22,8 +22,9 @@ export default function EventCard({ccEvent}) {
 
 
     return (
-        <div className="flex flex-col justify-center items-center w-1/4 border min-w-[180] border-blue-950 rounded-lg p-1 m-2">
-            <h3 className={"font-bold"}>{ccEvent.cc_event_name}</h3>
+        <div className="flex flex-col justify-center items-center w-1/4 border min-w-[160] md:min-w-[180] border-blue-950 rounded-lg p-1 m-2">
+            <h3 className={"font-bold text-sm md:text-md"}>{ccEvent.cc_event_name}</h3>
+            <h4 className={"font-bold text-sm"}>{ccEvent.cc_event_type === 'Practice' ? 'All Levels' : ccEvent.cc_event_type}</h4>
             <p className={"pb-2 text-sm"}>{eventStart.toLocaleString()}</p>
             <p className={"text-center text-sm pb-2"}>{ccEvent.cc_event_description}</p>
             <p className={"text-sm"}>{ccEvent.cc_event_location}</p>

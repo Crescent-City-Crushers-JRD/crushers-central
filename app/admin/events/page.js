@@ -77,10 +77,6 @@ export default function AdminEvent() {
         )
     }
 
-    useEffect(() => {
-
-    }, [])
-
     // Converts an RFC3339 string -> value the <input type="datetime-local"> expects
     function toDatetimeLocalValue(rfc3339) {
         if (!rfc3339) return "";
@@ -127,12 +123,21 @@ export default function AdminEvent() {
         setIsSubmitting(true);
         async function sendEvent(payload) {
             try {
-                console.log("Sending Payload", payload, "To: ", `${host}/events`);
-                const response = await fetch(`${host}/events`, {
+                if(editingId != 0) {
+                    const response = await fetch(`${host}/events/${editingId}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload),
+                    });
+                } else {
+                    const response = await fetch(`${host}/events`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(payload),
                     });
+                }
+                console.log("Sending Payload", payload, "To: ", `${host}/events`);
+
                 if(response.ok) {
                     const data = await response.json();
                     console.log(data);
@@ -164,6 +169,19 @@ export default function AdminEvent() {
     function handleLocationChange(event) {
 
     }
+
+    function handleEdit(event) {
+        setEventPayload({
+            event_type: event.cc_event_type,
+            event_name: event.cc_event_name,
+            event_start: event.cc_event_start,
+            event_end: event.cc_event_end,
+            event_description: event.cc_event_description,
+            event_location: event.cc_event_location,
+            status: ""
+        })
+        setEditingId(event.id)
+    }
     function listEvents() {
         console.log("events", events);
         if(events != null) {
@@ -178,7 +196,7 @@ export default function AdminEvent() {
                     <td>{event.cc_event_name}</td>
                     <td className={"text-sm"}>{toLocalTimePrint(event.cc_event_start).toLocaleString()}</td>
                     <td className={"text-sm"}>{toLocalTimePrint(event.cc_event_end).toLocaleTimeString()}</td>
-                    <td><button id={event.id} onClick={(e)=>{console.log("Loading: ",event.id)}} className={"cursor-pointer text-blue-800 hover:underline"}>Edit</button></td>
+                    <td><button id={event.id} onClick={(e)=>{handleEdit(event)}} className={"cursor-pointer text-blue-800 hover:underline"}>Edit</button></td>
                 </tr>
             })
 
@@ -196,7 +214,7 @@ export default function AdminEvent() {
                         <input
                             className="w-full border rounded-lg p-2"
                             placeholder="Event Name"
-                            value={eventPayload.name}
+                            value={eventPayload.event_name}
                             onChange={(e) => setEventPayload({ ...eventPayload, event_name: e.target.value })}
                             required
                         />
@@ -235,7 +253,7 @@ export default function AdminEvent() {
                         <textarea
                             className="w-full border rounded-lg p-2 h-20"
                             placeholder="Event Description"
-                            value={eventPayload.description}
+                            value={eventPayload.event_description}
                             onChange={(e) => setEventPayload({ ...eventPayload, event_description: e.target.value })}
                         />
                         <label className="w-1/2">Event Location</label>

@@ -13,6 +13,7 @@ export default function Home() {
     ]
     const textRef = useRef(null)
     const [upcomingEvents, setUpcomingEvents] = useState(null);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         setTimeout(()=>{
             textRef.current.style.opacity = 1;
@@ -59,8 +60,7 @@ export default function Home() {
                 <p className="p-3 text-xl md:text-3xl font-bold font-mono">The Crushers are a non-profit, all-gender, all inclusive junior roller derby league for kids ages 7-17 in New Orleans, LA.</p>
             </div>
             <ImageCarousel images={images} />
-            <div className={"mt-20 mb-1 text-2xl font-bold"}>Upcoming Events</div>
-            <EventsCards ccEvents={upcomingEvents} />
+            {upcomingEvents ? <><div className={"mt-20 mb-1 text-2xl font-bold"}>Upcoming Events</div><EventsCards ccEvents={upcomingEvents} /></> : ''}
         </div>
   );
 }

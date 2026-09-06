@@ -11,6 +11,9 @@ export default function EventsCards({ ccEvents }) {
         return 1;
     })
     const cards = ccEvents.map((ccEvent)=> {
+        const now = new Date();
+        const eventStart = new Date(ccEvent.cc_event_start);
+        if (ccEvent.start >= now) {}
         return (
             <EventCard key={ccEvent.id} ccEvent={ccEvent} />
         )
