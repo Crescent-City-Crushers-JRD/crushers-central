@@ -51,6 +51,9 @@ export default function AdminEvent() {
         "Assessments",
         "Level 2/3",
         "Game",
+        "Meeting",
+        "Event",
+        "Fundraiser",
         "Social",
         "Other"
     ]
