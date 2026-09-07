@@ -80,6 +80,20 @@ export default function AdminEvent() {
         )
     }
 
+    function toAddressFromString(address) {
+        let addressParts = address.split(", ");
+        let eAddress = {street: addressParts[0], city: addressParts[1], state: "", zip: ""};
+        if (addressParts.length > 3) {
+            eAddress.state = "UNKNOWN";
+            eAddress.zip = "UNKNOWN";
+            return eAddress;
+        }
+        let zipSplit = addressParts[3].split[" "];
+        eAddress.state = zipSplit[0];
+        eAddress.zip = zipSplit[1];
+        return eAddress;
+    }
+
     // Converts an RFC3339 string -> value the <input type="datetime-local"> expects
     function toDatetimeLocalValue(rfc3339) {
         if (!rfc3339) return "";
@@ -126,7 +140,7 @@ export default function AdminEvent() {
         setIsSubmitting(true);
         async function sendEvent(payload) {
             try {
-                if(editingId != 0) {
+                if(editingId >0  && editingId != null) {
                     const response = await fetch(`${host}/events/${editingId}`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
@@ -158,6 +172,7 @@ export default function AdminEvent() {
                 setEditingId(null);
             }
         }
+        eventPayload.event_address = toAddressFromString(eventPayload.event_address_str);
         sendEvent(eventPayload);
     }
 

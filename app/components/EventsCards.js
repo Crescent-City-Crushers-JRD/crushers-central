@@ -19,7 +19,7 @@ export default function EventsCards({ ccEvents }) {
         )
     })
     return (
-        <div className="flex flex-row overflow-x-scroll overflow-y-hidden w-1/2 mb-10 min-h-50">
+        <div className="flex flex-row overflow-x-scroll items-start w-1/2 mb-10 min-h-70">
             {cards.length === 0 ? <div>Nothing Happening</div> : cards}
         </div>
     )

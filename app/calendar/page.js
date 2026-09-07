@@ -27,7 +27,7 @@ export default function CalendarPage() {
             ccEventLocation: "BERD Warehouse",
         }
     ];
-    const [upcomingEvents, setUpcomingEvents] = useState(null);
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
     useEffect(() => {
         const host = (process.env.NEXT_PUBLIC_API_MODE === 'dev' ? process.env.NEXT_PUBLIC_API_HOST_LOCAL : process.env.NEXT_PUBLIC_API_HOST_PROD)
         async function fetchEvents() {
@@ -43,7 +43,7 @@ export default function CalendarPage() {
                         if(a.cc_event_start > b.cc_event_start) return 1;
                         return -1;
                     })
-                    setUpcomingEvents(json.events.slice(0, 4));
+                    setUpcomingEvents(json.events);
                 }
             } catch (error) {
                 console.log(error);
@@ -75,7 +75,7 @@ export default function CalendarPage() {
 
     return (<div className={"w-full min-h-screen flex flex-col justify-start pt-10 items-center"}>
         <h2 className={"text-4xl font-bold font-banger"}>Upcoming Events</h2>
-        {upcomingEvents ? <EventsCards ccEvents={upcomingEvents} /> : <div className={"mt-10 mb-10 text-xl"}>Loading Events...</div>}
+        {upcomingEvents ? <EventsCards ccEvents={upcomingEvents.slice(0, 4)} /> : <div className={"mt-10 mb-10 text-xl"}>Loading Events...</div>}
         <MonthCalendar onDateSelect={handleDate} />
         <h2 className={"text-2xl font-bold font-sans"}>{selectedDate.toDateString() !== today.toDateString()   ? `Happening on ${selectedDate.toLocaleDateString()}` : `Happening Today`}</h2>
         <EventsCards ccEvents={dateEvents} />
