@@ -107,7 +107,7 @@ export default function MonthCalendar({ onDateSelect, allEvents }) {
                             onClick={() => handleClick(date)}
                             className={`h-12 rounded border text-sm 
                 ${key === today ? "bg-blue-500 text-white" : "bg-white"}
-                ${eventToday ? "border-2 border-green-600" : "border"} 
+                ${eventToday ? "border-2 border-purple-600" : "border"} 
                 ${isSelected ? "border-3" : "border"}
                 hover:bg-blue-100`}
                         >
