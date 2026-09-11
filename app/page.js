@@ -35,7 +35,9 @@ export default function Home() {
                         if(a.cc_event_start > b.cc_event_start) return 1;
                         return -1;
                     })
-                    setUpcomingEvents(json.events.slice(0, 4));
+                    const now = new Date().toISOString();
+
+                    setUpcomingEvents(json.events.filter((event) => event.cc_event_start >= now).slice(0, 4));
                 }
             } catch (error) {
                 console.log(error);

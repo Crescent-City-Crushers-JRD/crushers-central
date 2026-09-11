@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function MonthCalendar({ onDateSelect }) {
+export default function MonthCalendar({ onDateSelect, allEvents }) {
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState("");
 
@@ -86,6 +86,18 @@ export default function MonthCalendar({ onDateSelect }) {
                     if (!date) {
                         return <div key={index} />;
                     }
+                    let eventToday = false;
+                    const todayEvents = allEvents.filter(event => {
+                        const start = event.cc_event_start.split("T")[0];
+                        const startDay = date.toISOString().split("T")[0];
+                        return start === startDay;
+
+                    })
+
+                    if (todayEvents.length > 0) {
+                        eventToday = true;
+                        console.log(date, todayEvents);
+                    }
 
                     const key = formatDateKey(date);
                     const isSelected = (key === selectedDate);
@@ -94,7 +106,8 @@ export default function MonthCalendar({ onDateSelect }) {
                             key={key}
                             onClick={() => handleClick(date)}
                             className={`h-12 rounded border text-sm 
-                ${key === today ? "bg-blue-500 text-white" : "bg-white"} 
+                ${key === today ? "bg-blue-500 text-white" : "bg-white"}
+                ${eventToday ? "border-2 border-green-600" : "border"} 
                 ${isSelected ? "border-3" : "border"}
                 hover:bg-blue-100`}
                         >
