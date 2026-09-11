@@ -9,13 +9,25 @@ export default function JoinUsPage() {
                 <div className={"flex flex-col justify-start mt-2 font-mono text-md"}>
                     <p className={"mb-2"}>The Crescent City Crushers are open to all and any kid of any skill level, between the ages of 7 and 17,
                         whether you'd like to skate for fun or participate in competitive, full-impact, Roller Derby matches.</p>
-                    <p className={"mb-2 text-2xl font-bold"}>The 2026-2027 season of Crescent City Crushers Junior Roller Derby is now underway!</p>
+                    <p className={"mb-2 text-2xl font-bold"}>Welcome to the 2026-2027 season of Crescent City Crushers Junior Roller Derby, we can't wait to meet you!</p>
 
                     <p className={"mb-2"}>
-                        Our intake for the year is over, but we maintain rolling enrollment through out the season for skaters with skating experience based on
-                        the head training coach's sole assessment. Brand new skaters can fill out the new skater enrollment also but because of our limited practice space
-                        will have to wait to join during the next intake camp.
+                        Our first official practice and new skater intake will be from 9am-11pm on Sunday September 6th (9/6/26), at our practice warehouse at 3632 Desire Parkway.
+                        This is our final intake day for new skaters. We will have another intake in the summer of '27 after our regular season ends.
                     </p>
+                    <p className={"mb-2 font-bold"}>Parents and Caregivers, please plan to stay for the first 10 minutes of practice, as we will be going over important information, schedule, and forms for the 2026-27 season</p>
+
+                    <p className={"mb-2 font-bold"}>FAQs:</p>
+                    <p className={"mb-2"}>Experience level needed?</p>
+                    <p className={"mb-2"}>None! Fluency in quad skating is great, to have but it's not required: we start everyone out with skating and safety basics and progress to more advanced skills and levels of skater-to-skater physical contact based on individual skater progress.</p>
+
+                    <p className={"mb-2"}>Do we need to bring gear?</p>
+                    <p className={"mb-2"}>If you've got it, bring it; if not, we've got loaner pads, helmets, and skates available. Please show up wearing socks, sneakers, and comfortable clothes you're able to move around in.  Also, show up hydrated and BRING WATER!</p>
+
+                    <p className={"mb-2"}>Where and when do y'all practice?</p>
+                    <p className={"mb-2"}>3632 Desire Pkwy in New Orleans just off of the Louisa St. exit.  Practice is Sunday morning from 9-11am and officially starts on 9/6 after the culmination of boot camp.</p>
+
+                    <p className={"mb-2 mt-10"}>Registration cost: $100 non-refundable covers all four days of boot camp and your first month of dues.</p>
 
                     <p className={"mb-2"}>Crushers follow the JRDA Level System for training and assessing Skaters for different levels of: </p>
                     <ul className={"ml-5 lg:ml-20 w-[90%] flex flex-col mt-2 font-mono text-md"}>
