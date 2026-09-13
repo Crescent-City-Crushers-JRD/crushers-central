@@ -50,11 +50,13 @@ export default function AdminEvent() {
         "Scrimmage",
         "Assessments",
         "Level 2/3",
+        "Level 3",
         "Game",
         "Meeting",
         "Event",
         "Fundraiser",
         "Social",
+        "Party",
         "Other"
     ]
 
