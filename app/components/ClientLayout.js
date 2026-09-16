@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/app/components/navbar";
 import {useEffect, useRef} from "react";
+import Footer from "@/app/components/footer";
 
 export default function ClientLayout({ children }) {
     const pathname = usePathname();
@@ -20,11 +21,12 @@ export default function ClientLayout({ children }) {
 
     }, [])
     return (
-        <>
-            <Navbar ref={navRef}/>
-            <div className="flex flex-col h-screen bg-white pt-14">
+        <div className="flex flex-col h-full bg-white">
+            <Navbar ref={navRef} />
+            <div className="flex-1 overflow-y-auto pt-14">
                 {children}
             </div>
-        </>
+            <Footer />
+        </div>
     );
 }

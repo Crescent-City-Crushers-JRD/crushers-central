@@ -83,8 +83,17 @@ export default function AdminEvent() {
     }
 
     function toAddressFromString(address) {
+        let eAddress = {street: addressParts[0], city: addressParts[1], state: "", zip: "", address: address};
+        if(address.length < 3) {
+            return eAddress.address = address;
+        }
+
         let addressParts = address.split(", ");
-        let eAddress = {street: addressParts[0], city: addressParts[1], state: "", zip: ""};
+
+        if(address.length < 2) {
+            return eAddress.address = address;
+        }
+
         if (addressParts.length > 3) {
             eAddress.state = "UNKNOWN";
             eAddress.zip = "UNKNOWN";
