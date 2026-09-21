@@ -61,7 +61,7 @@ export default function AdminEvent() {
     ]
 
     function resetForm() {
-        setEditId(null);
+        setEditingId(null);
         setEventPayload(
             {
                 event_type: "Practice",
@@ -77,31 +77,36 @@ export default function AdminEvent() {
                     state: "LA",
                     zip:   "70126"
                 },
-                status: ""
+                status: "Active"
             }
         )
     }
 
     function toAddressFromString(address) {
-        let eAddress = {street: addressParts[0], city: addressParts[1], state: "", zip: "", address: address};
-        if(address.length < 3) {
-            return eAddress.address = address;
+        if (!address) {
+            return { street: "", city: "", state: "", zip: "", address: address || "" };
+        }
+        const parts = address.split(",").map(s => s.trim());
+        const eAddress = { street: "", city: "", state: "", zip: "", address };
+        if (parts.length < 3) {
+            eAddress.street = parts[0] || "";
+            eAddress.city = parts[1] || "";
+            return eAddress;
         }
 
-        let addressParts = address.split(", ");
-
-        if(address.length < 2) {
-            return eAddress.address = address;
-        }
-
-        if (addressParts.length > 3) {
+        if (parts.length > 3) {
             eAddress.state = "UNKNOWN";
             eAddress.zip = "UNKNOWN";
             return eAddress;
         }
-        let zipSplit = addressParts[3].split[" "];
-        eAddress.state = zipSplit[0];
-        eAddress.zip = zipSplit[1];
+
+        eAddress.street = parts[0];
+        eAddress.city = parts[1];
+
+        const stateZip = parts[2].split(" ").filter(Boolean);
+        eAddress.state = stateZip[0] || "";
+        eAddress.zip = stateZip[1] || "";
+
         return eAddress;
     }
 
@@ -147,50 +152,59 @@ export default function AdminEvent() {
 
 
     async function handleSubmit(event) {
-        event.preventDefault()
+        event.preventDefault();
         setIsSubmitting(true);
+
+        const payload = {
+            ...eventPayload,
+            event_address: toAddressFromString(eventPayload.event_address_str),
+        };
+
         async function sendEvent(payload) {
             try {
-                if(editingId >0  && editingId != null) {
-                    const response = await fetch(`${host}/events/${editingId}`, {
+                let response;
+                if (editingId > 0 && editingId != null) {
+                    response = await fetch(`${host}/events/${editingId}`, {
                         method: "PUT",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(payload),
                     });
                 } else {
-                    const response = await fetch(`${host}/events`, {
+                    response = await fetch(`${host}/events`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(payload),
                     });
                 }
-                console.log("Sending Payload", payload, "To: ", `${host}/events`);
 
-                if(response.ok) {
+                if (response.ok) {
                     const data = await response.json();
                     console.log(data);
                     resetForm();
                 } else {
                     console.log("Failed", response);
                 }
-                const json = await response.json();
-                setEvents(json.events);
-                console.log(json);
             } catch (err) {
                 console.log(err.message);
             } finally {
                 setIsSubmitting(false);
+                resetForm();
                 setEditingId(null);
             }
         }
-        eventPayload.event_address = toAddressFromString(eventPayload.event_address_str);
-        sendEvent(eventPayload);
+
+        sendEvent(payload);
     }
 
     function handleLocation(event) {
         console.log("event", event.target.value);
         if (event.target.value === "Warehouse") {
-            setEventPayload({ ...eventPayload, event_address_str: "3632 Desire Pkwy, New Orleans, LA 70126" });
+            setShowLocation(false);
+            setEventPayload({
+                ...eventPayload,
+                event_location: "BERD Warehouse",
+                event_address_str: "3632 Desire Pkwy, New Orleans, LA 70126",
+            });
         } else {
             setShowLocation(true);
         }
@@ -207,7 +221,7 @@ export default function AdminEvent() {
             event_end: event.cc_event_end,
             event_description: event.cc_event_description,
             event_location: event.cc_event_location,
-            status: ""
+            status: event.status,
         })
         setEditingId(event.id)
     }
@@ -225,6 +239,7 @@ export default function AdminEvent() {
                     <td>{event.cc_event_name}</td>
                     <td className={"text-sm"}>{toLocalTimePrint(event.cc_event_start).toLocaleString()}</td>
                     <td className={"text-sm"}>{toLocalTimePrint(event.cc_event_end).toLocaleTimeString()}</td>
+                    <td className="text-sm">{event.status}</td>
                     <td><button id={event.id} onClick={(e)=>{handleEdit(event)}} className={"cursor-pointer text-blue-800 hover:underline"}>Edit</button></td>
                 </tr>
             })
@@ -288,28 +303,38 @@ export default function AdminEvent() {
                         <label className="w-1/2">Event Location</label>
                         <select className="w-full border rounded-lg p-2"
                                 required
-                        onChange={(e) => {setEventPayload({ ...eventPayload, location: e.target.value }); handleLocation(e);} }>
+                        onChange={handleLocation}>
                             <option value="Warehouse">BERD Warehouse</option>
                             <option value="Other">Other</option>
                         </select>
-                        <span className={showLocation ? "" : "hidden"}>
-                        <label className="w-1/2">Location Name:</label>
-                            <input
-                                className="w-full border rounded-lg p-2"
-                                placeholder="Location Name"
-                                value={eventPayload.name}
-                                onChange={(e) => setEventPayload({ ...eventPayload, event_location: e.target.value })}
+                        <label className="w-1/2">Event Status</label>
+                        <select className="w-full border rounded-lg p-2"
                                 required
-                            />
-                        <label className="w-1/2">Location Address:</label>
-                            <input
-                                className="w-full border rounded-lg p-2"
-                                placeholder="Location Address"
-                                value={eventPayload.event_address_str}
-                                onChange={(e) => setEventPayload({ ...eventPayload, event_address_str: e.target.value })}
-                                required
-                            />
-                        </span>
+                            onChange={(e) => {setEventPayload({ ...eventPayload, status: e.target.value })}}>
+                            <option value="Active">Scheduled</option>
+                            <option value="Cancelled">Cancelled</option>
+                            <option value="Delayed">Delayed</option>
+                        </select>
+                        {showLocation && (
+                            <span>
+                                <label className="w-1/2">Location Name:</label>
+                                <input
+                                    className="w-full border rounded-lg p-2"
+                                    placeholder="Location Name"
+                                    value={eventPayload.event_location}
+                                    onChange={(e) => setEventPayload({ ...eventPayload, event_location: e.target.value })}
+                                    required
+                                />
+                                <label className="w-1/2">Location Address:</label>
+                                <input
+                                    className="w-full border rounded-lg p-2"
+                                    placeholder="Location Address"
+                                    value={eventPayload.event_address_str}
+                                    onChange={(e) => setEventPayload({ ...eventPayload, event_address_str: e.target.value })}
+                                    required
+                                />
+                            </span>
+                        )}
                         <div className="flex gap-3">
                             <button
                                 type="submit"
@@ -341,6 +366,7 @@ export default function AdminEvent() {
                             <th>Event Name</th>
                             <th>Event Start</th>
                             <th>Event End</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         </thead>

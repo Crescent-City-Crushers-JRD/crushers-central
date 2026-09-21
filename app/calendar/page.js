@@ -31,6 +31,7 @@ export default function CalendarPage() {
     const [allEvents, setAllEvents] = useState([]);
     useEffect(() => {
         const host = (process.env.NEXT_PUBLIC_API_MODE === 'dev' ? process.env.NEXT_PUBLIC_API_HOST_LOCAL : process.env.NEXT_PUBLIC_API_HOST_PROD)
+        const now = new Date().toISOString();
         async function fetchEvents() {
             try {
                 const response = await fetch(`${host}/events`,
@@ -38,8 +39,8 @@ export default function CalendarPage() {
                         method: "GET",
                     });
                 const json = await response.json();
-                setAllEvents(json.events);
-                const now = new Date().toISOString();
+                setAllEvents(json.events.filter((event) => event.status === "Active"));
+
                 if (json.events.length > 0) {
                     json.events.sort((a, b) => {
                         if(a.cc_event_start > b.cc_event_start) return 1;
@@ -47,8 +48,6 @@ export default function CalendarPage() {
                     })
                     setUpcomingEvents(json.events.filter((event) => event.cc_event_start >= now));
                 }
-                const dateAsString = now.split("T")[0];
-                setDateEvents(allEvents.filter((event) => event.cc_event_start.split("T")[0] === dateAsString));
             } catch (error) {
                 console.log(error);
             } finally {
@@ -61,11 +60,11 @@ export default function CalendarPage() {
     useEffect(() => {
         if (upcomingEvents && upcomingEvents.length > 0) {
             const todayDate = new Date();
-            setSelectedDate(todayDate);
-            const dateAsString = todayDate.toISOString().split("T")[0];
-            setDateEvents(upcomingEvents.filter((event) => event.cc_event_start.split("T")[0] === dateAsString));
+            const now = new Date().toISOString();
+            const dateAsString = now.split("T")[0];
+            setDateEvents(allEvents.filter((event) => event.cc_event_start.split("T")[0] === dateAsString));
         }
-    }, [upcomingEvents]);
+    }, [upcomingEvents, allEvents]);
 
 
     const handleDate = (date) => {
@@ -76,9 +75,6 @@ export default function CalendarPage() {
     }
 
     const today = new Date();
-    console.log(today.toDateString());
-    console.log(selectedDate.toDateString());
-    console.log("Is The Selection Less than Today?", selectedDate < today)
     return (<div className={"w-full min-h-screen flex flex-col justify-start pt-10 items-center"}>
         <h2 className={"text-4xl font-bold font-banger"}>Upcoming Events</h2>
         {upcomingEvents ? <EventsCards ccEvents={upcomingEvents.slice(0, 4)} /> : <div className={"mt-10 mb-10 text-xl"}>Loading Events...</div>}
