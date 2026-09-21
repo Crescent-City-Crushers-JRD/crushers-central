@@ -36,8 +36,8 @@ export default function Home() {
                         return -1;
                     })
                     const now = new Date().toISOString();
-
-                    setUpcomingEvents(json.events.filter((event) => event.cc_event_start >= now).slice(0, 4));
+                    const allEvents = json.events.filter((event) => event.status === "Active");
+                    setUpcomingEvents(allEvents.filter((event) => event.cc_event_start >= now).slice(0, 4));
                 }
             } catch (error) {
                 console.log(error);
