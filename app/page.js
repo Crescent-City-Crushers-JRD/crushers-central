@@ -3,6 +3,7 @@
 import ImageCarousel from "@/app/components/ImageCarousel";
 import { useRef, useState, useEffect } from "react";
 import EventsCards from "@/app/components/EventsCards";
+import Link from "next/link";
 export default function Home() {
     const images = [
         "/images/carousel2.jpg",
@@ -56,6 +57,11 @@ export default function Home() {
                     <h2 className="font-bold text-5xl animate-slide-down drop-shadow-sm drop-shadow-indigo-600 font-banger" >Crescent City</h2>
                     <h1 className={`text-8xl animate-slide-bounce font-extrabold drop-shadow-md drop-shadow-gray-700 font-banger`}>Crushers</h1>
                 </div>
+            </div>
+            <div className="flex flex-col justify-center mt-10 text-4xl font-banger text-blue-700 hover:underline">
+                <Link href="/families">
+                    Click Here For Important Updates for Families and Skaters!
+                </Link>
             </div>
 
             <div className="text-center w-full items-center opacity-0 hidden m-auto" ref={textRef}>

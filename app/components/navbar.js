@@ -14,7 +14,7 @@ export default forwardRef(function Navbar(props, ref) {
         // { id: 2, title: "Derby", link: "/gear" },
         { id: 3, title: "Join", link: "/join" },
         { id: 4, title: "Calendar", link: "/calendar" },
-        // { id: 5, title: "For Families", link: "/parents" },
+        { id: 5, title: "For Families", link: "/families" },
         // { id: 6, title: "Contribute", link: "/support" },
     ];
 
