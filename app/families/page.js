@@ -14,6 +14,9 @@ export default function ParentsPage() {
                     <p>
                         <a className={"text-blue-600 hover:underline hover:text-purple-500"} href={"https://cvmsports.com/collections/crescent-city"} target="_blank" rel="noopener noreferrer">
                             CVM Sports Crescent City Gear</a>
+                        <a className={"text-blue-600 hover:underline hover:text-purple-500"}  href={"https://cvmsports.com/pages/size-charts-1"} target="_blank" rel="noopener noreferrer">
+                            CVM Sports Size Charts
+                        </a>
                     </p>
                     <p className={"font-bold italic text-sm mt-3"}>NOTE: The CVM Sports store will only be open till October 10th, 2026. We are not going to get
                         sponsorship completed before this shop closes. It does take time to make and delivery jerseys and gear. If you would like to order
