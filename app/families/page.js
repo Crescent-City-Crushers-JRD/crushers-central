@@ -43,8 +43,9 @@ export default function ParentsPage() {
                         </a></p>
                     </li>
                 </ul>
-                <p>
-
+                <h3 className={"text-3xl font-bold mt-10 text-center"}>Family Info</h3>
+                <p className={"justify-start mt-10 pb-2 font-mono border-b-2 text-xl"}>
+                    <a className={"text-blue-600 hover:underline hover:text-purple-500"} href={"https://docs.google.com/presentation/d/1ocp-8wRwwbyxGkJFEQ_DoAZWa8bWltviDwbo2vf14ig/edit?usp=sharing"} target="_blank" rel="noopener noreferrer">Fall, 2026 All-League Slideshow</a>
                 </p>
 
             </div>
