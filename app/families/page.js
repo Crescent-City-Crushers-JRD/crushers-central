@@ -7,7 +7,7 @@ export default function ParentsPage() {
                     Families are the foundation of each of our skaters and the Crushers depend on the support and
                     help of skater families to keep our League going and growing.
                 </p>
-                <p>Please checkout important information below:</p>
+                <p>Please check out important information below:</p>
 
                 <h3 className={"text-3xl font-bold mt-10 text-center"}>Crushers Jerseys and Gear Store</h3>
                 <p className={"border-b-2 pb-2 "}>
