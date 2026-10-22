@@ -20,7 +20,7 @@ export default function ParentsPage() {
                             CVM Sports Size Charts
                         </a>
                     </p>
-                    <p className={"font-bold italic text-md mt-3"}>NOTE: The CVM Sports store will only be open till October 10th, 2026. We are not going to get
+                    <p className={"font-bold italic text-md mt-3"}>NOTE: The CVM Sports store will only be open till October 24th, 2026. We are not going to get
                         sponsorship completed before this shop closes. It does take time to make and delivery jerseys and gear. If you would like to order
                         now and we will work out a patch of sponsors and then refund families, please do so.</p>
                     <p className={"font-bold italic text-sm mt-3"}>Custom jersey production typically takes 5–8 weeks from the date of our store close date.</p>
