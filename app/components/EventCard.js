@@ -28,7 +28,7 @@ export default function EventCard({ccEvent}) {
             <p className={"pb-2 text-sm"}>{eventStart.toLocaleString()}</p>
             <p className={"text-center text-sm pb-2"}>{ccEvent.cc_event_description}</p>
             <p className={"text-sm"}>{ccEvent.cc_event_location}</p>
-            <p className={"text-sm text-center"}>{buildAddress(ccEvent)}</p>
+            {/*<p className={"text-sm text-center"}>{buildAddress(ccEvent)}</p>*/}
         </div>
     )
 }
